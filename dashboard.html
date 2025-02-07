@@ -58,7 +58,7 @@
       btnGet.addEventListener("click", async (e) => {
         // alert("hello")
         const id = 37;
-        const url = `http://localhost/Learning/backend-01-02-25/getUser.php?id=${id}`;
+        const url = `http://localhost/Learning/backend-01-02-25/users.php?id=${id}`;
         const auth = localStorage.getItem("auth")
           ? JSON.parse(localStorage.getItem("auth"))
           : null;
@@ -101,7 +101,7 @@
 
       const btnGetFull = document.getElementById("btnGetFull");
       btnGetFull.addEventListener("click", async (e) => {
-        const url = `http://localhost/Learning/backend-01-02-25/getUsers.php`;
+        const url = `http://localhost/Learning/backend-01-02-25/users.php`;
         const auth = localStorage.getItem("auth")
           ? JSON.parse(localStorage.getItem("auth"))
           : null;
@@ -157,7 +157,7 @@
 
         afficheUser.innerHTML = "";
 
-        const url = `http://localhost/Learning/backend-01-02-25/getUsers.php`;
+        const url = `http://localhost/Learning/backend-01-02-25/users.php`;
         const auth = localStorage.getItem("auth")
           ? JSON.parse(localStorage.getItem("auth"))
           : null;

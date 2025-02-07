@@ -7,8 +7,8 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="retour" >retour</button>
-    <h1> Detail d'un utilisateur</h1>
+    <button id="retour">retour</button>
+    <h1>Detail d'un utilisateur</h1>
     <div id="cardUser">
       <p id="firstname">Prénoms:</p>
       <p id="lastname">Nom:</p>
@@ -40,7 +40,7 @@
         const email = cardUser.querySelector("#email");
         // console.log(firstname);
         // return;
-        const url = `http://localhost/Learning/backend-01-02-25/getUser.php?id=${id}`;
+        const url = `http://localhost/Learning/backend-01-02-25/users.php?id=${id}`;
         const auth = getAuth();
 
         if (!auth) {

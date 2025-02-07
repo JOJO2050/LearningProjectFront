@@ -78,7 +78,7 @@
         const formData = new FormData(this);
         // console.log(formData);
         try {
-          const {success, message} =  await postData('http://localhost/Learning/backend-01-02-25/register.php', formData)
+          const {success, message} =  await postData('http://localhost/Learning/backend-01-02-25/users.php', formData)
           if (!success) {
             alert(message)
             return;

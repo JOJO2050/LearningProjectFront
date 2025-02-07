@@ -45,7 +45,7 @@
         }
 
         try {
-          const url = `http://localhost/Learning/backend-01-02-25/getUser.php?id=${id}`;
+          const url = `http://localhost/Learning/backend-01-02-25/users.php?id=${id}`;
           const resp = await fetch(url, {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -100,7 +100,7 @@
         }
 
         try {
-          const url = `http://localhost/Learning/backend-01-02-25/updateUser.php?id=${userId.value}`;
+          const url = `http://localhost/Learning/backend-01-02-25/users.php?id=${userId.value}`;
 
           const resp = await fetch(url, {
             method: "PUT",

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="retour" >retour</button>
+    <h1> Detail d'un utilisateur</h1>
+    <div id="cardUser">
+      <p id="firstname">Prénoms:</p>
+      <p id="lastname">Nom:</p>
+      <p id="email">Email:</p>
+    </div>
+
+    <button id="logout">Se déconnecter</button>
+    <div id="loader">
+      <div class="spinner"></div>
+    </div>
+    <script src="js/return.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function (e) {
+        loader.style.visibility = "visible";
+        const id =
+          document.location.search.split("=")[1] !== undefined
+            ? document.location.search.split("=")[1]
+            : null;
+
+        if (!id) {
+          Redirection("/dashboard.html");
+          return;
+        }
+        const cardUser = document.getElementById("cardUser");
+        const firstname = cardUser.querySelector("#firstname");
+        const lastname = cardUser.querySelector("#lastname");
+        const email = cardUser.querySelector("#email");
+        // console.log(firstname);
+        // return;
+        const url = `http://localhost/Learning/backend-01-02-25/getUser.php?id=${id}`;
+        const auth = getAuth();
+
+        if (!auth) {
+          // Redirection("/login.html")
+          alert("cet user n'existe pas");
+        }
+
+        try {
+          const response = await fetch(url, {
+            headers: {
+              Authorization: `Bearer ${auth}`,
+            },
+          });
+          const { success, user, message, code } = await response.json();
+          if (!success) {
+            Redirection("/dashboard.html");
+            return;
+          }
+          console.log(success, user, message, code);
+          firstname.textContent = firstname.textContent + user.firstname;
+          lastname.textContent = lastname.textContent + user.lastname;
+          email.textContent = email.textContent + user.email;
+        } catch (error) {
+        } finally {
+          loader.style.visibility = "hidden";
+        }
+      });
+    </script>
+  </body>
+</html>

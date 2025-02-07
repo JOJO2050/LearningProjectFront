@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnPut">btnPut</button>
+    <button id="btnGet">btnGet</button>
+    <button id="btnPost">btnPost</button>
+    <button id="btnDelete">btnDelete</button>
+    
+</body>
+<script >
+const dataPut = {
+    "id":25,
+    "userId": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  }
+
+  const btnPut = document.getElementById("btnPut")
+  btnPut.addEventListener("click", async function (e) {
+    const url ='https://jsonplaceholder.typicode.com/posts/5'
+    try {
+        const resp = await fetch(url, {
+            method : "PUT",
+            headers :{
+                content :"content-type:application/json",
+            },
+            body : JSON.stringify(dataPut)
+        })
+        const data = await resp.json()
+        console.log(data);
+    } catch (error) {
+        
+    }
+  })
+   
+  const btnGet = document.getElementById("btnGet")
+  btnGet.addEventListener("click", async function (e) {
+    const url = 'https://jsonplaceholder.typicode.com/comments?postId=1'
+
+    try {
+        const resp = await fetch(url, {
+            method: "GET"
+        })
+        const data = await resp.json()
+        console.log(data);
+    } catch (error) {
+        
+    }
+  })
+   
+
+   const dbUser ={
+  "userId":24 ,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+   }
+
+   const btnPost = document.getElementById("btnPost")
+  btnPost.addEventListener("click", async function (e) {
+    const url ='https://jsonplaceholder.typicode.com/posts'
+    try {
+        const resp = await fetch(url, {
+            method : "POST",
+            headers :{
+                content :"content-type:application/json",
+            },
+            body : JSON.stringify(dataPut)
+        })
+        const data = await resp.json()
+        console.log(data);
+    } catch (error) {
+        
+    }
+  })
+   
+
+   
+   const btnDelete = document.getElementById("btnDelete")
+    btnDelete.addEventListener("click", async function (e)  {
+        const url = 'https://jsonplaceholder.typicode.com/posts/1'
+
+try {
+ const resp = await fetch(url, {
+     method : "DELETE",
+    
+ })
+ const dbDelete = await resp.json()
+ console.log(dbDelete);
+
+} catch (error) {
+ 
+}
+    })
+   
+</script>
+</html>
